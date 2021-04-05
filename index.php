@@ -49,7 +49,7 @@
 			}
 			else 
 			{
-				header('location: index.php?error=1&message=Impossible de vous autentifier correctement.');
+				header('location: index.php?error=1&message=Impossible de vous authentifier correctement.');
 				exit();
 			}
 		}
@@ -75,6 +75,7 @@
 					?>
 						<h1>Bonjour !</h1>
 						<p>Qu'allez vous regarder aujourd'hui ?</p>
+						<small><a href="logout.php">Déconnexion</a></small>
 					<?php 
 				}
 				else
@@ -86,7 +87,7 @@
 					//Affichage des erreurs
 						if(isset($_GET['error']))
 						{
-							if(isset($GET_['message']))
+							if(isset($_GET['message']))
 							{
 								echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
 							}
