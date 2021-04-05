@@ -1,6 +1,13 @@
 <?php
 	session_start();
 
+	//redirection si session active
+	if(isset($_SESSION['connect']))
+	{
+		header('location: index.php');
+		exit();
+	}
+
 	//verification email, mdp
 	if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two']))
 	{

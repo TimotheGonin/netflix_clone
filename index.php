@@ -69,32 +69,45 @@
 	
 	<section>
 		<div id="login-body">
-				<h1>S'identifier</h1>
+			<?php
+				if(isset($_SESSION['connect']))
+				{ 
+					?>
+						<h1>Bonjour !</h1>
+						<p>Qu'allez vous regarder aujourd'hui ?</p>
+					<?php 
+				}
+				else
+				{ 
+					?>
 
-				<?php
-				//Affichage des erreurs
-					if(isset($_GET['error']))
-					{
-						if(isset($GET_['message']))
+					<h1>S'identifier</h1>
+					<?php
+					//Affichage des erreurs
+						if(isset($_GET['error']))
 						{
-							echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
+							if(isset($GET_['message']))
+							{
+								echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
+							}
+						} 
+						else if(isset($_GET['success']))
+						{
+							echo '<div class="alert success">Vous êtes maintenant connecté.</div>';
 						}
-					} 
-					else if(isset($_GET['success']))
-					{
-						echo '<div class="alert success">Vous êtes maintenant connecté.</div>';
-					}
-				?>
+					?>
 
-				<form method="post" action="index.php">
-					<input type="email" name="email" placeholder="Votre adresse email" required />
-					<input type="password" name="password" placeholder="Mot de passe" required />
-					<button type="submit">S'identifier</button>
-					<label id="option"><input type="checkbox" name="auto" checked />Se souvenir de moi</label>
-				</form>
-			
+					<form method="post" action="index.php">
+						<input type="email" name="email" placeholder="Votre adresse email" required />
+						<input type="password" name="password" placeholder="Mot de passe" required />
+						<button type="submit">S'identifier</button>
+						<label id="option"><input type="checkbox" name="auto" checked />Se souvenir de moi</label>
+					</form>
+				
 
-				<p class="grey">Première visite sur Netflix ? <a href="inscription.php">Inscrivez-vous</a>.</p>
+					<p class="grey">Première visite sur Netflix ? <a href="inscription.php">Inscrivez-vous</a>.</p>
+			<?php } ?>
+
 		</div>
 	</section>
 
