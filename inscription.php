@@ -1,6 +1,13 @@
 <?php
 	session_start();
 
+	//redirection si session active
+	if(isset($_SESSION['connect']))
+	{
+		header('location: index.php');
+		exit();
+	}
+
 	//verification email, mdp
 	if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two']))
 	{
@@ -58,7 +65,7 @@
 	<meta charset="utf-8">
 	<title>Netflix</title>
 	<link rel="stylesheet" type="text/css" href="design/default.css">
-	<link rel="icon" type="image/pngn" href="img/favicon.png">
+	<link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
 
