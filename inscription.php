@@ -58,7 +58,7 @@
 	<meta charset="utf-8">
 	<title>Netflix</title>
 	<link rel="stylesheet" type="text/css" href="design/default.css">
-	<link rel="icon" type="image/pngn" href="img/favicon.png">
+	<link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
 
