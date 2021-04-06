@@ -44,6 +44,12 @@
 				$_SESSION['connect'] = 1;
 				$_SESSION['email'] = $user['email'];
 
+				//CHECKBOX COOKIE
+				if (isset($_POST['auto']))
+				{
+					setcookie('auth', $user['secret'], time() + 364*24*3600, '/', null, false, true);
+				}
+
 				header('location: index.php?success=1');
 				exit();
 			}
@@ -74,6 +80,14 @@
 				{ 
 					?>
 						<h1>Bonjour !</h1>
+						
+						<?php
+						if(isset($_GET['success']))
+						{
+							echo '<div class="alert success">Vous êtes maintenant connecté.</div>';
+						}
+						
+						?>
 						<p>Qu'allez vous regarder aujourd'hui ?</p>
 						<small><a href="logout.php">Déconnexion</a></small>
 					<?php 
@@ -92,10 +106,6 @@
 								echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
 							}
 						} 
-						else if(isset($_GET['success']))
-						{
-							echo '<div class="alert success">Vous êtes maintenant connecté.</div>';
-						}
 					?>
 
 					<form method="post" action="index.php">
