@@ -28,4 +28,21 @@
         }
     }
 
+    if(isset($_SESSION['connect']))
+    {
+        require('src/connect.php');
+
+        $reqUser = $db->prepare('SELECT * FROM user WHERE email = ?');
+        $reqUser->execute(array($_SESSION['email']));
+
+        while($userAccount = $reqUser->fetch())
+        {
+            if($userAccount['blocked'] == 1)
+            {
+                header('location: logout.php');
+                exit();
+            }
+        }
+    }
+
 ?>

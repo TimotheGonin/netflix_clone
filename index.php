@@ -41,7 +41,9 @@
 
 		while($user = $req->fetch())
 		{
-			if($password == $user['password'])
+
+			//PASS VERIFICATION + BLOCKED ?
+			if($password == $user['password'] && $user['blocked'] == 0)
 			{
 				$_SESSION['connect'] = 1;
 				$_SESSION['email'] = $user['email'];
