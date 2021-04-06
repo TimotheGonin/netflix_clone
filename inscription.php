@@ -1,6 +1,8 @@
 <?php
 	session_start();
 
+	require('src/log.php');
+
 	//redirection si session active
 	if(isset($_SESSION['connect']))
 	{
