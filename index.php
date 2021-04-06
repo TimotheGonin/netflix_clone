@@ -1,6 +1,8 @@
 <?php
 	session_start();
 
+	require('src/log.php');
+
 	//verification email, mdp
 	if(!empty($_POST['email']) && (!empty($_POST['password'])))
 	{
